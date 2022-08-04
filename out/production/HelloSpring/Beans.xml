@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="helloWorld" class="com.zhangyue.springstudy.HelloWorld">
+        <property name="message" value="欢迎来到spring世界"/>
+    </bean>
+        <!--构造函数注入创建bean-->
+<!--    <bean id="student" class="com.zhangyue.springstudy.Student">-->
+<!--        <constructor-arg name="id" value="2"/>-->
+<!--        <constructor-arg name="name" value="张三"/>-->
+<!--        <constructor-arg name="grade" ref="grade"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="grade" class="com.zhangyue.springstudy.Grade">-->
+<!--        <constructor-arg name="gradeId" value="5"/>-->
+<!--        <constructor-arg name="gradeName" value="五年级"/>-->
+<!--    </bean>-->
+
+        <!--setter方法注入-->
+<!--    <bean id="student" class="com.zhangyue.springstudy.Student">-->
+<!--        &lt;!&ndash;使用 property 元素完成属性注入-->
+<!--            name: 类中的属性名称，例如 id,name-->
+<!--            value: 向属性注入的值 例如 学生的 id 为 1，name 为张三-->
+<!--        &ndash;&gt;-->
+<!--        <property name="id" value="1"></property>-->
+<!--        <property name="name" value="张三"></property>-->
+<!--        <property name="grade" ref="grade"></property>-->
+<!--    </bean>-->
+<!--    <bean id="grade" class="com.zhangyue.springstudy.Grade">-->
+<!--        <property name="gradeId" value="3"></property>-->
+<!--        <property name="gradeName" value="三年级"></property>-->
+<!--    </bean>-->
+
+    <!--p命名空间-->
+<!--    <bean id="student" class="com.zhangyue.springstudy.Student" p:name="小李" p:grade-ref="grade" p:id="001"></bean>-->
+<!--    <bean id="grade" class="com.zhangyue.springstudy.Grade" p:gradeId="1111" p:gradeName="技术部"></bean>-->
+
+    <!--c命名空间-->
+<!--    <bean id="student" class="com.zhangyue.springstudy.Student" c:name="小李" c:grade-ref="grade" c:id="001"/>-->
+<!--    <bean id="grade" class="com.zhangyue.springstudy.Grade" c:gradeId="1111" c:gradeName="技术部"></bean>-->
+
+        <!--单例模式-->
+<!--    <bean id="student" scope="singleton" class="com.zhangyue.springstudy.Student">-->
+<!--        <property name="id" value="123"/>-->
+<!--        <property name="name" value="张钺"/>-->
+<!--        <property name="grade" ref="grade"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="grade" scope="singleton" class="com.zhangyue.springstudy.Grade">-->
+<!--        <property name="gradeId" value="9"/>-->
+<!--        <property name="gradeName" value="九年级"/>-->
+<!--    </bean>-->
+    <!--prototype原型模式-->
+    <bean id="student" scope="prototype" class="com.zhangyue.springstudy.Student">
+        <property name="id" value="123"/>
+        <property name="name" value="张钺"/>
+        <property name="grade" ref="grade"/>
+    </bean>
+
+    <bean id="grade" scope="prototype" class="com.zhangyue.springstudy.Grade">
+        <property name="gradeId" value="9"/>
+        <property name="gradeName" value="九年级"/>
+    </bean>
+
+<!--    没有自动装配-->
+<!--    <bean id="dept" class="com.zhangyue.springstudy.Dept">-->
+<!--        <property name="deptNo" value="1"></property>-->
+<!--        <property name="deptName" value="技术部"></property>-->
+<!--    </bean>-->
+<!--    <bean id="employee" class="com.zhangyue.springstudy.Employee" autowire="no">-->
+<!--        <property name="empNo" value="002"></property>-->
+<!--        <property name="empName" value="小郭"></property>-->
+<!--        <property name="dept" ref="dept"></property>-->
+<!--    </bean>-->
+
+<!--    通过名称自动装配-->
+<!--    <bean id="dept" class="com.zhangyue.springstudy.Dept">-->
+<!--        <property name="deptNo" value="1"></property>-->
+<!--        <property name="deptName" value="技术部"></property>-->
+<!--    </bean>-->
+<!--    <bean id="employee" class="com.zhangyue.springstudy.Employee" autowire="byName">-->
+<!--        <property name="empNo" value="002"></property>-->
+<!--        <property name="empName" value="小郭"></property>-->
+<!--&lt;!&ndash;        <property name="dept" ref="dept"></property>&ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    开启组件扫描功能-->
+    <context:component-scan base-package="com.zhangyue.springstudy"></context:component-scan>
+
+</beans>
